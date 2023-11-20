@@ -1,4 +1,4 @@
-from src.stack import Node, Stack
+from src.stack import Stack
 
 if __name__ == '__main__':
     stack = Stack()
