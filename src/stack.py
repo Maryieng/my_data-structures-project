@@ -1,6 +1,5 @@
 class Node:
     """ Класс для узла стека"""
-    data = None
 
     def __init__(self, data, next_node):
         """ Конструктор класса Node"""
