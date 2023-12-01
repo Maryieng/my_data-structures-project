@@ -17,6 +17,10 @@ class Stack:
         """Конструктор класса Stack"""
         self.top = None
 
+    def __str__(self):
+        """ отображение информации об объекте класса для пользователей """
+        return f"{self.top}"
+
     def push(self, data) -> None:
         next_node = self.top
         new_top = Node(data, next_node)
