@@ -1,7 +1,10 @@
+from typing import Any
+
+
 class Node:
     """ Класс для узла стека"""
 
-    def __init__(self, data, next_node):
+    def __init__(self, data, next_node) -> None:
         """ Конструктор класса Node"""
         self.data = data
         self.next_node = next_node
@@ -10,7 +13,7 @@ class Node:
 class Stack:
     """Класс для стека"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Конструктор класса Stack"""
         self.top = None
 
@@ -19,7 +22,7 @@ class Stack:
         new_top = Node(data, next_node)
         self.top = new_top
 
-    def pop(self):
+    def pop(self) -> Any:
         """ Метод для удаления элемента с вершины стека и его возвращения"""
 
         if self.top is None:
