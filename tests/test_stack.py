@@ -41,3 +41,5 @@ def test_stack():
 
     popped_data = stack.pop()
     assert popped_data is None
+
+    assert str(Stack()) == 'None'
