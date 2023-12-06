@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Node:
     """Класс для узла очереди"""
 
@@ -29,14 +32,18 @@ class Queue:
             self.tail = node
             self.all.append(data)
 
-    def dequeue(self):
-        """
-        Метод для удаления элемента из очереди. Возвращает данные удаленного элемента
-
-        :return: данные удаленного элемента
-        """
-        pass
+    def dequeue(self) -> Any:
+        """ Метод для удаления элемента из очереди. Возвращает данные удаленного элемента
+        :return: данные удаленного элемента """
+        if len(self.all) > 1:
+            self.head = self.head.next_node
+        elif len(self.all) == 1:
+            self.head = None
+            self.tail = None
+        else:
+            return None
+        return self.all.pop(0)
 
     def __str__(self) -> str:
-        """Магический метод для строкового представления объекта"""
+        """ представления объекта"""
         return "\n".join(self.all)
