@@ -22,6 +22,7 @@ class Stack:
         return f"{self.top}"
 
     def push(self, data) -> None:
+        """ вывод следующей очереди """
         next_node = self.top
         new_top = Node(data, next_node)
         self.top = new_top

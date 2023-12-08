@@ -37,6 +37,7 @@ class LinkedList:
             self.head = new_node
 
     def to_list(self) -> Any:
+        """ Создается список и добавление данных """
         node = self.head
         if node is None:
             return str(None)
@@ -47,6 +48,7 @@ class LinkedList:
         return result
 
     def get_data_by_id(self, id: Any) -> Any:
+        """ Метод для получения данных по идентификатору """
         node = self.head
         if node is None:
             return str(None)
