@@ -25,7 +25,7 @@ class Stack:
         """ вывод следующей очереди """
         next_node = self.top
         new_top = Node(data, next_node)
-        self.top = new_top
+        self.top = new_top  # type: ignore
 
     def pop(self) -> Any:
         """ Метод для удаления элемента с вершины стека и его возвращения"""
