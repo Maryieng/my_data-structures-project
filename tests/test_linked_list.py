@@ -1,4 +1,5 @@
 import unittest
+
 from src.linked_list import LinkedList
 
 
@@ -53,6 +54,7 @@ class TestLinkedList(unittest.TestCase):
         linked_list.insert_beginning({'id': 1, 'name': 'Nina'})
         linked_list.insert_at_end({'id': 2, 'name': 'Lina'})
         self.assertEqual(linked_list.get_data_by_id(2), {'id': 2, 'name': 'Lina'})
+        self.assertEqual(linked_list.get_data_by_id(3), None)
 
     def test_str(self):
         linked_list = LinkedList()
@@ -62,3 +64,23 @@ class TestLinkedList(unittest.TestCase):
         linked_list.insert_beginning({'id': 0})
 
         self.assertEqual(str(linked_list), "{'id': 0} -> {'id': 1} -> None")
+
+
+ll = LinkedList()
+
+ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+ll.insert_at_end({'id': 2, 'username': 'mik.roz'})
+ll.insert_at_end({'id': 3, 'username': 'mosh_s'})
+ll.insert_beginning({'id': 0, 'username': 'serebro'})
+
+lst = ll.to_list()
+user_data = ll.get_data_by_id(3)
+assert user_data == {'id': 3, 'username': 'mosh_s'}
+
+ll = LinkedList()
+ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+ll.insert_at_end('idusername')  # type: ignore
+ll.insert_at_end([1, 2, 3])  # type: ignore
+ll.insert_at_end({'id': 2, 'username': 'mosh_s'})
+
+user_data = ll.get_data_by_id(2)
