@@ -15,14 +15,14 @@ class LinkedList:
     def __init__(self) -> None:
         self.head = None
         self.tail = None
-        self.list = []
+        self.list = []  # type: ignore
 
     def insert_beginning(self, data: dict) -> None:
         """ Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка """
         new_node = Node(data, self.head)
-        self.head = new_node
+        self.head = new_node  # type: ignore
         if not self.tail:
-            self.tail = new_node
+            self.tail = new_node  # type: ignore
 
     def insert_at_end(self, data: dict) -> None:
         """ Принимает данные (словарь) и добавляет узел с этими данными в конец связанного списка """
@@ -34,10 +34,10 @@ class LinkedList:
             self.head.next_node = new_node
             self.tail = new_node
         else:
-            self.head = new_node
+            self.head = new_node  # type: ignore
 
     def to_list(self) -> Any:
-        """ Создается список и добавление данных """
+        """ возвращает список с данными, содержащимися в односвязном списке """
         node = self.head
         if node is None:
             return str(None)
@@ -47,20 +47,25 @@ class LinkedList:
             node = node.next_node
         return result
 
-    def get_data_by_id(self, id: Any) -> Any:
-        """ Метод для получения данных по идентификатору """
+    def get_data_by_id(self, id_user: Any) -> Any:
+        """ возвращает первый найденный в LinkedList словарь с ключом 'id',
+         значение которого равно переданному в метод значению """
         node = self.head
         if node is None:
             return str(None)
         while node:
-            if node.data['id'] == id:
-                return node.data
-            node = node.next_node
-            if node is None:
-                break
+            try:
+                if node.data['id'] == id_user:
+                    return node.data
+                node = node.next_node
+            except TypeError:
+                print('Данные не являются словарем или в словаре нет id')
+                node = node.next_node
+                if node is None:
+                    break
 
     def __str__(self) -> str:
-        """Вывод данных односвязного списка в строковом представлении"""
+        """ Вывод данных односвязного списка в строковом представлении """
         node = self.head
         if node is None:
             return str(None)

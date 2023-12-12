@@ -16,7 +16,7 @@ class Queue:
 
     def __init__(self) -> None:
         """Конструктор класса Queue"""
-        self.all = []
+        self.all = []  # type: ignore
         self.head = None
 
     def enqueue(self, data: str) -> None:
@@ -24,7 +24,7 @@ class Queue:
             :param data: данные, которые будут добавлены в очередь """
         node = Node(data, None)
         if self.head is None:
-            self.head = node
+            self.head = node  # type: ignore
             self.tail = node
             self.all.append(data)
         else:
@@ -36,10 +36,10 @@ class Queue:
         """ Метод для удаления элемента из очереди. Возвращает данные удаленного элемента
         :return: данные удаленного элемента """
         if len(self.all) > 1:
-            self.head = self.head.next_node
+            self.head = self.head.next_node  # type: ignore
         elif len(self.all) == 1:
             self.head = None
-            self.tail = None
+            self.tail = None   # type: ignore
         else:
             return None
         return self.all.pop(0)
