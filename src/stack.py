@@ -1,34 +1,37 @@
+from typing import Any
+
+
 class Node:
-    """Класс для узла стека"""
+    """ Класс для узла стека"""
 
-    def __init__(self, data, next_node):
-        """
-        Конструктор класса Node
-
-        :param data: данные, которые будут храниться в узле
-        """
-        pass
+    def __init__(self, data, next_node) -> None:
+        """ Конструктор класса Node"""
+        self.data = data
+        self.next_node = next_node
 
 
 class Stack:
     """Класс для стека"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Конструктор класса Stack"""
-        pass
+        self.top = None
 
-    def push(self, data):
-        """
-        Метод для добавления элемента на вершину стека
+    def __str__(self):
+        """ отображение информации об объекте класса для пользователей """
+        return f"{self.top}"
 
-        :param data: данные, которые будут добавлены на вершину стека
-        """
-        pass
+    def push(self, data) -> None:
+        """ вывод следующей очереди """
+        next_node = self.top
+        new_top = Node(data, next_node)
+        self.top = new_top  # type: ignore
 
-    def pop(self):
-        """
-        Метод для удаления элемента с вершины стека и его возвращения
+    def pop(self) -> Any:
+        """ Метод для удаления элемента с вершины стека и его возвращения"""
 
-        :return: данные удаленного элемента
-        """
-        pass
+        if self.top is None:
+            return None
+        popped_data = self.top.data
+        self.top = self.top.next_node
+        return popped_data
